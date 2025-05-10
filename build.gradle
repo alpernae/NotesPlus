@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
+    id 'net.researchgate.release' version '3.0.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter:${junit5Version}",
+            "org.assertj:assertj-core:${assertJVersion}",
+            "org.mockito:mockito-core:${mockitoVersion}"
+    )
+
+    implementation 'net.portswigger.burp.extensions:montoya-api:2025.4'
+    implementation 'com.vladsch.flexmark:flexmark-all:0.64.8'
+    implementation 'com.formdev:flatlaf:3.4.1' // Added FlatLaf dependency
+}
+
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    options.encoding = "UTF-8"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Configure the jar task to create a fat JAR
+jar {
+    manifest {
+        attributes 'Implementation-Title': project.name,
+                   'Implementation-Version': project.version
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        // Prevent duplicate META-INF/versions/ files from different dependencies
+        // and other common conflicts.
+        exclude 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/io.netty.versions.properties'
+        exclude 'META-INF/versions/**' // Exclude multi-release JAR versioned classes if not needed or causing issues
+        exclude 'module-info.class'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE // or WARN, or FAIL
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = "net.portswigger.burp.extensions"
+            artifactId = rootProject.name
+        }
+    }
+}
+
+release {
+    tagTemplate = '$name-$version'
+    git {
+        requireBranch.set('main')
+    }
+}
+
+createReleaseTag.dependsOn publish
+
