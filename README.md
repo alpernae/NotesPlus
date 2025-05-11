@@ -9,6 +9,7 @@ Notes+ is a Burp Suite extension designed to provide a seamless note-taking expe
     *   **Note Listing**: Displays all saved notes in a selectable list.
     *   **Persistent Storage**: Notes are saved as individual Markdown (`.md`) files in a dedicated directory (`~/.BurpSuite/NotesPlusExtension` by default), ensuring your data persists across Burp Suite sessions.
     *   **Title Management**: Each note has a title. Saving a new note or an "Untitled Note" will prompt for a title if not provided.
+    *   **Ready To Use templates**: Visit this <a href="https://github.com/alpernae/bugbounty/blob/main/0x01/BBTNT.md">BBNT.md</a> template use.
 
 *   **Markdown Editor with Live Preview**:
     *   **Markdown Input**: A `JTextPane` allows for writing notes using Markdown syntax.
