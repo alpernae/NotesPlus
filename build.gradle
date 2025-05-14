@@ -34,7 +34,7 @@ test {
 
 // Configure the jar task to create a fat JAR
 jar {
-    archiveFileName = 'Notes+.jar' // Set the exact JAR file name
+    archiveFileName = 'NotesPlus' // Set the exact JAR file name
     manifest {
         attributes 'Implementation-Title': project.name,
                    'Implementation-Version': project.version

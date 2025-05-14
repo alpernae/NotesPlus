@@ -23,7 +23,7 @@ Notes+ is a Burp Suite extension designed to provide a seamless note-taking expe
         *   Markdown image syntax (`![]()`) is recognized, but images are intentionally not rendered in the preview.
 
 *   **User-Friendly Interface**:
-    *   **Dedicated Burp Tab**: Notes+ is accessible via a "Notes++" tab in the Burp Suite main window.
+    *   **Dedicated Burp Tab**: Notes+ is accessible via a "notes+" tab in the Burp Suite main window.
     *   **Intuitive Layout**:
         *   **Top Panel**: Contains the note title field and control buttons (`+` for New, `✓` for Save, `✗` for Delete). Buttons are sized to match the height of the title field for a consistent look.
         *   **Main Area**: A split pane divides the notes list (left) from the editor/preview area (right).
@@ -51,11 +51,11 @@ Notes+ is a Burp Suite extension designed to provide a seamless note-taking expe
     *   In the "Load new extension" dialog:
         *   Set "Extension type" to "Java".
         *   Click "Select file..." and navigate to the `build/libs/` directory in your project, then select the `BurpNotesPlus-VERSION.jar` file.
-    *   Click "Next". The extension should load, and a "Notes++" tab will appear in the Burp Suite main window. You should also see log messages from the extension in the `Output` pane of the `Extensions` tab.
+    *   Click "Next". The extension should load, and a "notes+" tab will appear in the Burp Suite main window. You should also see log messages from the extension in the `Output` pane of the `Extensions` tab.
 
 ## Usage
 
-1.  **Accessing Notes+**: Click on the "Notes++" tab in Burp Suite.
+1.  **Accessing Notes+**: Click on the "notes+" tab in Burp Suite.
 2.  **Creating a New Note**:
     *   Click the `+` (New Note) button.
     *   The title field will reset to "Untitled Note", and the editor will be cleared.

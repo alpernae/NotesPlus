@@ -19,7 +19,7 @@ public class NotesExtension implements BurpExtension {
         NotesPanel notesPanel = new NotesPanel(montoyaApi);
         NotesTab notesTab = new NotesTab(montoyaApi, notesPanel);
 
-        montoyaApi.userInterface().registerSuiteTab("Notes++", notesTab.getUiComponent());
+        montoyaApi.userInterface().registerSuiteTab("NotesPlus", notesTab.getUiComponent());
 
         logging.logToOutput(
                 "Notes+ Extension Loaded Successfully.\nVersion: v2025.1.3\nAuthor: ALPEREN ERGEL (@alpernae)");
