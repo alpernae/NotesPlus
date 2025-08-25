@@ -534,4 +534,18 @@ public class NotesPanel extends JPanel {
         isUpdating = false;
         renderMarkdownAndPreview();
     }
+
+    /**
+     * Cleanup method to be called when the extension is unloaded.
+     * Stops and disposes of the renderDelayTimer to prevent memory leaks.
+     */
+    public void cleanup() {
+        if (renderDelayTimer != null) {
+            renderDelayTimer.stop();
+            renderDelayTimer = null;
+            if (logging != null) {
+                logging.logToOutput("NotesPanel: renderDelayTimer cleaned up successfully.");
+            }
+        }
+    }
 }
