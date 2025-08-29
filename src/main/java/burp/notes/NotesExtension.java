@@ -26,7 +26,6 @@ public class NotesExtension implements BurpExtension {
                 "Notes+ Extension Loaded Successfully.\nVersion: v2025.1.3\nAuthor: ALPEREN ERGEL (@alpernae)");
     }
 
-    @Override
     public void extensionUnloaded() {
         if (notesPanel != null) {
             notesPanel.cleanup();
